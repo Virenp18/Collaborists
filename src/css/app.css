@@ -11002,6 +11002,63 @@ a.text-dark:focus {
   visibility: hidden !important;
 }
 
+.container1{
+  max-width: 600px;
+  width: 100%;
+  padding: 30px;
+   display: grid;
+  background: white;
+  box-shadow: gray;
+
+}
+.drag-area
+{
+    
+   width: 70%;
+   height:400px;
+   border: 3px dashed gray;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   margin:70px auto;
+   cursor: pointer;
+
+}
+.drag-area .icon
+{
+   font-size: 50px;
+   color:#1683ff;
+}
+.drag-area .header
+{
+   font-size: 12px;
+   font-weight: 500;
+   color:black;
+}
+.drag-area .button
+{
+   font-size: 20px;
+   font-weight: 500;
+   color:#1683ff;
+   cursor: pointer;
+}
+.drag-area .button:hover
+{
+text-decoration: underline ;
+}
+.drag-area.active
+{
+   border: 2px solid #1683ff;
+}
+.drag-area img{
+   max-width: 100%;
+   min-height: 100%;
+   
+   background-attachment:fixed;
+
+}
+
 @media print {
   *,
   *::before,
