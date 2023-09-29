@@ -1,192 +1,160 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
+<html lang="en">
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token">
-
-    <title>PinWeb</title>
-
+    <title>Collaborist</title>
     <!-- Scripts -->
-    <script src="./app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- Links -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> 
 
-    <!-- Fonts -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <!-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
-    
-    <!-- <script src="https://kit.fontawesome.com/08da7bafd3.js"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Styles -->
-    <link href="./app.css" rel="stylesheet">
-    <style>
-        
+    <link href="../src/css/app.css" rel="stylesheet">
 
+    <style> 
         .rounded-conrners {
             border-radius: 20px;
             border: none;
         }
-
         .preview {
             border: none;
-        }
-        
+        }       
         .preview:hover {
             border-style: solid;
             border-width: medium;
             border-color: #FF4136;
         }
-
-
-
         .avatar {
             /* vertical-align: middle; */
             width: 38.55px;
             height: 38.55px;
             border-radius: 50%;
         }
-
         /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
         @media screen and (max-width: 500px) {
-        .nav-pc {
-            display: none;
-        }
-
+            .nav-pc {
+                display: none;
+            }
         }    
-    
     </style>
 </head>
 <body>
     <div id="app">
-        <!-- Navigation -->
+        <!-- Navigation starts -->
         <nav class="navbar navbar-expand navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="./pexels-photo-674010.jpeg" height="50" width="50" class="rounded-circle nav-mobile" alt=""> 
-                    <span class="nav-pc">PinWeb</span> 
-                </a>
+          <div class="container">
+              <a class="navbar-brand" href="../index.html">
+                  <img src="../src/images/Collab.png" height="50" width="50" class="rounded-circle nav-mobile" alt="Collaborist Logo"> 
+                  <span class="nav-pc">Collaborist</span> 
+              </a>
+              <form action="./search.html" method="GET" class="form-inline my-2 my-lg-0">
+                  <input value="" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+              </form>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="navbar-nav ml-auto">
+                      <li class="nav-item mr-2">                            
+                          <a href="./profile.html">
+                              <img src="../src/images/profile_picture.png" alt="" class="avatar nav-mobile">
+                              <span class="nav-pc">My profile</span> 
+                          </a>                        
+                      </li>
+                      <li class="nav-item">
+                          <a href="./create.html" class="btn btn-danger ">
+                              <i class="fas fa-plus nav-mobile"></i>
+                              <span class="nav-pc">New post</span> 
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+      <!-- Navigation ends -->
 
-                <form action="/search.html" method="GET" class="form-inline my-2 my-lg-0">
-                    <input value="" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
-                </form>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">                        
-                        <!-- <li class="nav-item">
-                            <a class="nav-link mr-2" href="">Login or sign-up</a>
-                        </li>                         -->
-                        <li class="nav-item mr-2">                            
-                            <a href="#">
-                                <img src="./pexels-photo-674010.jpeg" alt="" class="avatar nav-mobile">
-                                <span class="nav-pc">My profile</span> 
-                            </a>                        
-                        </li>
-                        <li class="nav-item">
-                            <a href="create.html" class="btn btn-danger ">
-                                <i class="fas fa-plus nav-mobile"></i>
-                                <span class="nav-pc">New post</span> 
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+      <!-- Main Div starts -->
         <main class="py-4">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
                     <!-- @if(Auth()->user()->avatar === null) -->
-                        <img style="width: 200px; height: 200px" src="./pexels-photo-674010.jpeg" class="rounded-circle mx-auto d-block img-thumbnail" alt="profile_pic_{{Auth()->user()->name}}">
+                        <img style="width: 200px; height: 200px" src="../src/images/pexels-photo-674010.jpeg" class="rounded-circle mx-auto d-block img-thumbnail" alt="profile_pic_">
                     <!-- @else -->
-                        <!-- <img style="width: 200px; height: 200px" src="/images/profiles/{{Auth()->user()->avatar}}" class="rounded-circle mx-auto d-block img-thumbnail" alt="profile_pic_{{Auth()->user()->name}}"> -->
+                        <!-- <img style="width: 200px; height: 200px" src="/images/profiles/{{Auth()->user()->avatar}}" class="rounded-circle mx-auto d-block img-thumbnail" alt="profile_pic_"> -->
                     <!-- @endif -->
                     <br>
                     <div class="row mx-auto d-block">
-                        <div class="d-flex justify-content-center">
-            
-                          <button type="button" data-bs-toggle="modal" data-bs-target="#edit_avatar_modal" class="btn btn-secondary btn-sm">
+                        <div class="d-flex justify-content-center">            
+                          <button type="button" data-toggle="modal" data-target="#edit_avatar_modal" class="btn btn-secondary btn-sm">
                             <!-- @if($user->avatar === null)  -->
                               <!-- Add avatar  -->
                             <!-- @else  -->
                               Edit avatar 
                             <!-- @endif -->
-                          </button>
-             
+                          </button>             
                         </div>
-                    </div>
-            
-                    
-                    </div>
-            
+                    </div>                  
+                    </div>            
                     <div class="col-md-8">
                         <h2>Viren 
                             <!-- @if ( $user->id  ==  auth()->id())  -->
-                            <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#edit_name_modal" >Edit</button>
+                            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#edit_name_modal" >Edit</button>
                               <!-- @endif -->
                              </h2> 
                         <p>Joined: 18 January 2023</p>
                         <p class="lead">
                             <!-- @if($user->moto === null)
                               @if ( $user->id  ==  auth()->id()) -->
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#edit_moto_modal" >Add moto</button>
+                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#edit_moto_modal" >Add moto</button>
                               <!-- @endif -->
                             <!-- @else -->
                               <!-- @if ( $user->id  ==  auth()->id()) -->
                                 <!-- {{$user->moto}} 
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#edit_moto_modal" >Edit</button> -->
+                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#edit_moto_modal" >Edit</button> -->
                               <!-- @endif -->
-                            <!-- @endif -->
-                        
-                        </p>
-                        
+                            <!-- @endif -->                       
+                        </p>                        
                         <p>Total likes: 223</p>
                         <div class="card-columns">
                             <!-- @foreach ($user->posts as $p) -->
                                 <div class="card  border-white">
-                                    <a href="singlePost.html" >
-                                        <img class="card-img-top rounded-conrners preview"  src="./pexels-photo-674010.jpeg" alt="alt">
+                                    <a href="./singlePost.html" >
+                                        <img class="card-img-top rounded-conrners preview"  src="../src/images/pexels-photo-674010.jpeg" alt="alt">
                                     </a>
                                     <div class="card-footer d-flex justify-content-between" style="background-color: transparent; border-top : none;">
                                         <p class="h4 text-secondary">Title</p>
-                                        <button type="button" data-bs-toggle="tooltip" data-placement="top" title="{{$p->created_at}} <br> {{$p->likes->count()}} likes <br> {{$p->comments->count()}} comments" data-html="true" class="btn btn-link"  >
+                                        <button type="button" data-toggle="tooltip" data-placement="top" title="title" data-html="true" class="btn btn-link"  >
                                             <i class="fa fa-ellipsis-h" ></i>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="card  border-white">
-                                    <a href="singlePost.html" >
-                                        <img class="card-img-top rounded-conrners preview"  src="./pexels-photo-674010.jpeg" alt="alt">
+                                    <a href="./singlePost.html" >
+                                        <img class="card-img-top rounded-conrners preview"  src="../src/images/pexels-photo-674010.jpeg" alt="alt">
                                     </a>
                                     <div class="card-footer d-flex justify-content-between" style="background-color: transparent; border-top : none;">
                                         <p class="h4 text-secondary">Title</p>
-                                        <button type="button" data-bs-toggle="tooltip" data-placement="top" title="{{$p->created_at}} <br> {{$p->likes->count()}} likes <br> {{$p->comments->count()}} comments" data-html="true" class="btn btn-link"  >
+                                        <button type="button" data-toggle="tooltip" data-placement="top" title="title" data-html="true" class="btn btn-link"  >
                                             <i class="fa fa-ellipsis-h" ></i>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="card  border-white">
-                                    <a href="singlePost.html" >
-                                        <img class="card-img-top rounded-conrners preview"  src="./pexels-photo-674010.jpeg" alt="alt">
+                                    <a href="./singlePost.html" >
+                                        <img class="card-img-top rounded-conrners preview"  src="../src/images/pexels-photo-674010.jpeg" alt="alt">
                                     </a>
                                     <div class="card-footer d-flex justify-content-between" style="background-color: transparent; border-top : none;">
                                         <p class="h4 text-secondary">Title</p>
-                                        <button type="button" data-bs-toggle="tooltip" data-placement="top" title="{{$p->created_at}} <br> {{$p->likes->count()}} likes <br> {{$p->comments->count()}} comments" data-html="true" class="btn btn-link"  >
+                                        <button type="button" data-toggle="tooltip" data-placement="top" title="title" data-html="true" class="btn btn-link"  >
                                             <i class="fa fa-ellipsis-h" ></i>
                                         </button>
                                     </div>
                                 </div>
                             <!-- @endforeach   -->
-                        </div> 
-                    
-            
-            
-            
-                    
-                    
-            
+                        </div>            
                     </div>
                 </div>
             </div>
@@ -202,12 +170,10 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                  <form method="POST" action="/profile/{{ $user->id }}/update">
-                    @method('PATCH')
-                    @csrf
+                  <form action="#">
                     <div class="form-group ">
                         <label for="name" class="sr-only">Current Name</label>
-                        <input name="name" value="{{ $user->name }}" type="text"  class="form-control form-control-lg" id="name" placeholder="New name">
+                        <input name="name" value="Enter name here..." type="text"  class="form-control form-control-lg" id="name" placeholder="New name">
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -231,10 +197,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                  <form method="POST" action="/profile/{{ $user->id }}/update">
-                    @method('PATCH')
-                    @csrf
-                    
+                  <form  action="#">                    
                     <div class="form-group ">
                         <label for="moto" class="sr-only">User moto</label>
                         <textarea name="moto" class="form-control form-control-lg" id="moto" rows="3" placeholder="Type a new moto"></textarea>
@@ -254,22 +217,17 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="modalAvatarLabel">Edit moto</h5>
+                    <h5 class="modal-title" id="modalAvatarLabel">Edit Avtar</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                  <form method="POST" action="/profile/{{ $user->id }}/update" enctype="multipart/form-data">
-                    @method('PATCH')
-                    @csrf
-                    
-                    
-                      <div class="custom-file">
-                        <input type="file" name="avatar" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label"  for="customFile">Choose file</label>
-                      </div>
-                    
+                    <form action="#" enctype="multipart/form-data">                    
+                        <div class="custom-file">
+                          <input type="file" name="avatar" class="custom-file-input" id="customFile">
+                          <label class="custom-file-label"  for="customFile">Choose file</label>
+                        </div>                    
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel edit</button>
@@ -280,11 +238,12 @@
               </div>
             </div>
         </main>
+      <!-- Main Div ends -->
     </div>
 
     <script>
     $(document).ready(function(){
-        // $('[data-toggle="tooltip"]').tooltip();   
+        $('[data-toggle="tooltip"]').tooltip();   
         
     });
 </script>

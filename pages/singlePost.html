@@ -1,88 +1,70 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token">
-
-    <title>PinWeb</title>
-
-    <!-- Scripts -->
-    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
-
-    <!-- Fonts -->
-    <!-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Collaborist</title>
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <!-- Links -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> 
     
-    <script src="https://kit.fontawesome.com/08da7bafd3.js"></script>
-
-    <!-- Styles -->
-    <link href="./app.css" rel="stylesheet">
-    <style>
-        
-
-        .rounded-conrners {
-            border-radius: 20px;
-            border: none;
-        }
-
-        .preview {
-            border: none;
-        }
-        
-        .preview:hover {
-            border-style: solid;
-            border-width: medium;
-            border-color: #FF4136;
-        }
-
-
-
-        .avatar {
-            /* vertical-align: middle; */
-            width: 38.55px;
-            height: 38.55px;
-            border-radius: 50%;
-        }
-
-        /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
-        @media screen and (max-width: 500px) {
-        .nav-pc {
-            display: none;
-        }
-
-        }    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    </style>
-</head>
+        <!-- Styles -->
+        <link href="../src/css/app.css" rel="stylesheet">
+    
+        <style> 
+            .rounded-conrners {
+                border-radius: 20px;
+                border: none;
+            }
+            .preview {
+                border: none;
+            }       
+            .preview:hover {
+                border-style: solid;
+                border-width: medium;
+                border-color: #FF4136;
+            }
+            .avatar {
+                /* vertical-align: middle; */
+                width: 38.55px;
+                height: 38.55px;
+                border-radius: 50%;
+            }
+            /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+            @media screen and (max-width: 500px) {
+                .nav-pc {
+                    display: none;
+                }
+            }    
+        </style>
+    </head>
 <body>
     <div id="app">
-        <!-- Navigation -->
+        <!-- Navigation starts -->
         <nav class="navbar navbar-expand navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="./pexels-photo-674010.jpeg" height="50" width="50" class="rounded-circle nav-mobile" alt=""> 
-                    <span class="nav-pc">PinWeb</span> 
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../src/images/Collab.png" height="50" width="50" class="rounded-circle nav-mobile" alt="Collaborist Logo"> 
+                    <span class="nav-pc">Collaborist</span> 
                 </a>
-
-                <form action="/search.html" method="GET" class="form-inline my-2 my-lg-0">
+                <form action="./search.html" method="GET" class="form-inline my-2 my-lg-0">
                     <input value="" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
                 </form>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">                        
-                        <!-- <li class="nav-item">
-                            <a class="nav-link mr-2" href="">Login or sign-up</a>
-                        </li>                         -->
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-2">                            
-                            <a href="#">
-                                <img src="./pexels-photo-674010.jpeg" alt="" class="avatar nav-mobile">
+                            <a href="./profile.html">
+                                <img src="../src/images/profile_picture.png" alt="" class="avatar nav-mobile">
                                 <span class="nav-pc">My profile</span> 
                             </a>                        
                         </li>
                         <li class="nav-item">
-                            <a href="create.html" class="btn btn-danger ">
+                            <a href="./create.html" class="btn btn-danger ">
                                 <i class="fas fa-plus nav-mobile"></i>
                                 <span class="nav-pc">New post</span> 
                             </a>
@@ -91,21 +73,24 @@
                 </div>
             </div>
         </nav>
+        <!-- Navigation ends -->
+  
+        <!-- Main Div starts -->
         <main class="py-4">
             <div class="container">
                 <div class="row"> 
                     <!-- image and back,edit and delete -->
                     <div class="col-md-6">
-                        <img src="./pexels-photo-674010.jpeg" class="img-fluid rounded" alt="Responsive image">
+                        <img src="../src/images/pexels-photo-674010.jpeg" class="img-fluid rounded" alt="Responsive image">
                         <div class="row justify-content-between mt-2">
                             <div class="col-md-12">
                             <div class="float-left">
-                                <a href="index.html" class="text-secondary">< Back</a>
+                                <a href="../index.html" class="text-secondary">< Back</a>
                             </div>
                             <!-- @auth -->
                             <div class="float-right">  
                                 <!-- @if ( $user->id  ==  $post->user_id) -->
-                                    <form method="POST" action="/posts/{{ $post->id }}" class="form-inline">
+                                    <form action="#" class="form-inline">
                                         <!-- @method('DELETE')
                                         @csrf  -->
                                         <div class="form-group mb-2 mr-2">
@@ -128,7 +113,7 @@
                     <!-- Date, Likes, Like button, title, Body, Comments, Post comment -->
                     <div class="col-md-6">
                             <div class="row justify-content-between">
-                                <div><p class="text-secondary">18/01/1997</p></div>
+                                <div><p class="text-secondary">18 January 2023</p></div>
                                 <!-- @auth -->
                                 <div><strong>20 Likes</strong></div> 
                                 <div>
@@ -141,9 +126,9 @@
                                         <button type="submit" class="btn btn-danger">Unlike</button> -->
                                     <!-- </form> -->
                                     <!-- @else -->
-                                    <form action="/post/{{$post->id}}/like" method="POST">
+                                    <form action="">
                                         <!-- @csrf -->
-                                        <input type="hidden" name="post_id" value="{{$post->id}}">
+                                        <input type="hidden" name="post_id" value="">
                                         <button type="submit" class="btn btn-outline-danger">Like</button>
                                     </form>
                                     <!-- @endif -->
@@ -172,7 +157,7 @@
                                          <!-- Single Comment -->
                                         <div class="media mb-4">
                                             <!-- @if(Auth()->user()->avatar === null) -->
-                                                <img class="d-flex mr-3 rounded-circle" src="./pexels-photo-674010.jpeg" width="60" height="60"  alt="profile_pic_{{Auth()->user()->name}}">
+                                                <img class="d-flex mr-3 rounded-circle" src="../src/images/pexels-photo-674010.jpeg" width="60" height="60"  alt="profile_pic_{{Auth()->user()->name}}">
                                             <!-- @else -->
                                                 <!-- <img class="d-flex mr-3 rounded-circle" src="/images/profiles/{{Auth()->user()->avatar}}" width="60" height="60"  alt="profile_pic_{{Auth()->user()->name}}"> -->
                                             <!-- @endif -->
@@ -183,7 +168,7 @@
                                         </div>       
                                         <div class="media mb-4">
                                             <!-- @if(Auth()->user()->avatar === null) -->
-                                                <img class="d-flex mr-3 rounded-circle" src="./pexels-photo-674010.jpeg" width="60" height="60"  alt="profile_pic_{{Auth()->user()->name}}">
+                                                <img class="d-flex mr-3 rounded-circle" src="../src/images/pexels-photo-674010.jpeg" width="60" height="60"  alt="profile_pic_{{Auth()->user()->name}}">
                                             <!-- @else -->
                                                 <!-- <img class="d-flex mr-3 rounded-circle" src="/images/profiles/{{Auth()->user()->avatar}}" width="60" height="60"  alt="profile_pic_{{Auth()->user()->name}}"> -->
                                             <!-- @endif -->
@@ -202,7 +187,7 @@
                             <!-- @auth -->
                             <!-- <div class="col-12"> -->
                             <!-- @include ('errors') -->
-                            <form method="POST" action="/post/{{ $post->id }}/comments">
+                            <form action="">
                                 <!-- @csrf -->
                                 
                                 <div class="form-group">
@@ -217,13 +202,14 @@
                             <!-- @endauth -->
             
                             <!-- @guest -->
-                            <p class="text-secondary">You must <a href="/login.html">login</a> in order to comment or like this post!</p>
+                            <p class="text-secondary">You must <a href="#">login</a> in order to comment or like this post!</p>
                             <!-- @endguest -->
                             
                     </div>
                 </div>    
             </div>
         </main>
+        <!-- Main Div ends -->
     </div>
 
     <script>

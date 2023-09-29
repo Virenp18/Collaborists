@@ -43,7 +43,7 @@
 *::after {
   box-sizing: border-box;
 }
-
+    
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -11097,5 +11097,5 @@ a.text-dark:focus {
   .table .thead-dark th {
     color: inherit;
     border-color: #dee2e6;
-  }
+  } 
 }
