@@ -252,12 +252,44 @@ label {
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
 }
+.search-container {
+  position: relative;
+}
 
+#searchInput {
+  padding-left: 30px; /* Adjust this value to change the space for the icon */
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px; /* Adjust this value to position the icon */
+  transform: translateY(-50%);
+  color: #555; /* Icon color */
+}
+span{
+  color:grey;
+}
+
+.next{
+border: none;
+cursor: pointer;
+background-color: white;
+}
+.next:hover{
+  background-color: black;
+}
 /* Style for the dropdown content (hidden by default) */
 .button {
   border-radius: 0;
 }
+button.back{
+  border:none;
 
+}
+.back:hover{
+  background-color: grey;
+}
 button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
@@ -2126,7 +2158,9 @@ pre code {
 .table-responsive > .table-bordered {
   border: 0;
 }
-
+.form-group.collab{
+position: relative;
+}
 .form-control {
   display: block;
   width: 100%;
