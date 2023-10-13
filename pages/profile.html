@@ -9,6 +9,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Links -->
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> 
 
@@ -36,18 +38,23 @@
             height: 38.55px;
             border-radius: 50%;
         }
+        .btn.dropdown-toggle::after {
+    display: none;
+  }
+
         /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
         @media screen and (max-width: 500px) {
             .nav-pc {
                 display: none;
             }
+            
         }    
     </style>
 </head>
 <body>
     <div id="app">
         <!-- Navigation starts -->
-        <nav class="navbar navbar-expand navbar-light bg-light">
+        <nav class="navbar navbar-expand navbar-light bg-light top">
           <div class="container">
               <a class="navbar-brand" href="../index.html">
                   <img src="../src/images/Collab.png" height="50" width="50" class="rounded-circle nav-mobile" alt="Collaborist Logo"> 
@@ -65,19 +72,28 @@
                           </a>                        
                       </li>
                       <li class="nav-item">
-                          <a href="./create.html" class="btn btn-danger ">
-                              <i class="fas fa-plus nav-mobile"></i>
-                              <span class="nav-pc">New post</span> 
-                          </a>
-                      </li>
+                        <a href="./create.html" class="btn btn-danger ">
+                            <i class="fas fa-plus nav-mobile"></i>
+                            <span class="nav-pc">New post</span> 
+                        </a>
+                    </li>
+                
                   </ul>
               </div>
           </div>
       </nav>
+     
       <!-- Navigation ends -->
 
       <!-- Main Div starts -->
         <main class="py-4">
+            <button class="btn btn-danger dropdown-toggle" id="dropdownBtn" data-bs-toggle="dropdown">
+                <i class="fas fa-plus nav-mobile"></i>
+            </button>
+            <ul class="dropdown-menu">
+                <li><button class="dropdown-item" href="./create.html">Post</button></li>
+                <li> <button class="btn dropdown-item" data-toggle="modal" data-target="#create-modal-board">Board</button></li>
+            </ul>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
@@ -122,7 +138,7 @@
                         <p>Total followers: <b>18</b></p>
                         <div class="card-columns">
                             <!-- @foreach ($user->posts as $p) -->
-                                <div class="card  border-white">
+                                <div class="card  border-white mb-5">
                                     <a href="./singlePost.html" >
                                         <img class="card-img-top rounded-conrners preview"  src="../src/images/pexels-photo-674010.jpeg" alt="alt">
                                     </a>
@@ -239,9 +255,43 @@
                 </div>
               </div>
             </div>
+            
+        <div class="modal fade" id="create-modal-board" tabindex="-1" role="dialog" aria-labelledby="modalBoard" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered board" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title font-weight-bolder" id="modalBoard">Create Board</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <!-- <form  action="/board.html">                     -->
+              <div class="form-group">
+                  <label for="broadName">Name</label>
+                  <textarea name="broadName" class="form-control form-control-lg rounded-2" id="broadName" rows="1" placeholder="Like places to go or your favourites"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a href="./board.html" class="btn btn-secondary rounded-5">Create</a>
+            </div>
+            <!-- </form>  -->
+          </div>
+        </div>
+      </div>
+                  </div>
+                  </form> 
+                </div>
+              </div>
+            </div>
+            
         </main>
       <!-- Main Div ends -->
+      
+
     </div>
+
+    
 </body>
 <script src="../src/js/app.js"></script>
 </html>
