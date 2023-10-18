@@ -4,6 +4,30 @@
     <%- include('../layout/head'); %>
     <style>
       /* Remove borders and box shadows from the modal and its components */
+   
+    .rounded-conrners {
+      border-radius: 20px;
+      border: none;
+    }
+
+    .preview {
+      border: none;
+    }
+
+    .preview:hover {
+      border-style: solid;
+      border-width: medium;
+      border-color: #FF4136;
+    }
+
+    .avatar {
+      /* vertical-align: middle; */
+      width: 38.55px;
+      height: 38.55px;
+      border-radius: 50%;
+    }
+
+    /* Remove borders and box shadows from the modal and its components */
     .modal-content {
       border: none;
       box-shadow: none;
@@ -18,6 +42,72 @@
     .btn.dropdown-toggle::after {
       display: none;
     }
+
+    .emailOptions {
+      padding: 10px;
+      cursor: pointer;
+      margin-left: 4%;
+      font-size: medium;
+      width: 430px;
+      border: black;
+    }
+
+    .emailOptions:hover {
+      background-color: #e4e4e4;
+
+    }
+    /* Style for the links */
+li{
+  color:rgb(239, 80, 80); /* Blue color for links */
+  text-decoration: none; /* Remove underlines */
+  font-size: 17px;
+}
+.email-link {
+  flex: 1; /* Allow the email link to take remaining space */
+  text-decoration: none; /* Remove underlines for the link */
+  color: #333; /* Text color */
+}
+
+.email-permissions-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+
+/* Style for the small option button on the right side */
+.permissions-select {
+  margin-left: 160px; 
+  padding: 2px 5px; /* Add padding for a button-like appearance */
+  background-color: #fff; /* White background */
+  font-size: 16px; /* Adjust the font size */
+  cursor: pointer; /* Change the cursor on hover */
+  font-weight: bold;
+  float:right;
+}
+select.permissions-select{
+  border: none;
+
+}
+.permissions-select:focus {
+  outline: none; /* Remove the default focus outline */
+  border: 1px solid #007bff; /* Change the border color on focus */
+}
+
+/* Styling for the dropdown arrow (optional) */
+.permissions-select::after {
+  content: '\25BE'; /* Unicode character for a down arrow */
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  
+}
+@media screen and (max-width: 500px) {
+      .nav-pc {
+        display: none;
+      }
+    }
     </style>
 </head>
 <body>
@@ -31,7 +121,8 @@
         <main class="py-2">
           <div class="container">
             <div class="edit-board text-center pt-5">
-              <h1>Viren</h1>
+
+              <h1>Viren
                 <button class="btn dropdown-toggle text-decoration-none bg-light rounded-5" id="dropdownBtn1"
                   data-bs-toggle="dropdown">
                   <i class="fas fa-ellipsis-h  fa-2x"></i>
@@ -40,58 +131,69 @@
                   <li><a class="dropdown-item" href="#">Edit Board</a></li>
                   <li><a class="dropdown-item" href="#">Share</a></li>
                 </ul>
+                <button class="btn dropdown-toggle text-decoration-none bg-light rounded-5" id="history"
+                data-toggle="modal" data-target="#history-modal"><i class="fas fa-undo"></i></button>
+      
             </div>
+            </h1>
             <div class="addCollab text-center">
-              <button class="btn rounded-5 bg-body-secondary" data-toggle="modal" data-target="#add-modal-collab"><i
-                  class="fas fa-plus fa-3x"></i></button>
-            </div>  
-            <a href="/pages/create" class="btn btn-danger btn-lg btn-block mt-5">Add New Idea</a>
-          <!-- <div class="card-columns"> -->
-            <!-- @foreach ($posts as $p) -->
-            
-            <!-- <div class="card border-white">
-                <a href="pages/singlePost.html" >
-                    <img class="card-img-top rounded-conrners preview"  src="/img/pexels-photo-674010.jpeg" alt="alt">
-                </a>
-                <div class="card-footer d-flex justify-content-between mb-0" style="background-color: transparent; border-top : none;">
-                    <p class="text-secondary">Title</p>
-                    <button type="button" data-toggle="tooltip" data-placement="top" title="tooltip" data-html="true" class="btn btn-link">
-                        <i class="fa fa-ellipsis-h" ></i>
-                    </button>
-                </div>
+              <button class="btn rounded-5 bg-body-secondary" data-toggle="modal" data-target="#add-modal-collab"><i class="fas fa-plus fa-3x"></i></button>
+                                  
+          </div>
+      
+        </div>
+        
+        <div class="modal fade" id="history-modal" tabindex="-1" role="dialog" aria-labelledby="modalInvite"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title font-weight-bolder" id="modalInvite">History</h1>
+      
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group collab">
+                    <table class="table">
+      
+                    <thead class="thead-dark">
+                      <tr>              
+                        <th scope="col">#</th>
+      
+                        <th scope="col">Post Name</th>
+                        <th scope="col">Updated On</th>
+                        <th scope="col">Action</th>
+      
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td >1</th>
+                        <td>Viren</th>
+                        <td>4-Nov-2020</td>
+                        <td><button class="btn-danger">Rollback</button></td>
+                        
+                      </tr>
+                  </tbody></table>
+                    
+              </div>
             </div>
-            <div class="card border-white">
-                <a href="pages/singlePost.html" >
-                    <img class="card-img-top rounded-conrners preview"  src="/img/pexels-photo-674010.jpeg" alt="alt">
-                </a>
-                <div class="card-footer d-flex justify-content-between mb-0" style="background-color: transparent; border-top : none;">
-                    <p class="text-secondary">Title</p>
-                    <button type="button" data-toggle="tooltip" data-placement="top" title="tooltip" data-html="true" class="btn btn-link">
-                        <i class="fa fa-ellipsis-h" ></i>
-                    </button>
-                </div>
+              <div class="modal-footer">
+              </div>
+              </form>
             </div>
-            <div class="card border-white">
-                <a href="pages/singlePost.html" >
-                    <img class="card-img-top rounded-conrners preview"  src="/img/pexels-photo-674010.jpeg" alt="alt">
-                </a>
-                <div class="card-footer d-flex justify-content-between mb-0" style="background-color: transparent; border-top : none;">
-                    <p class="text-secondary">Title</p>
-                    <button type="button" data-toggle="tooltip" data-placement="top" title="tooltip" data-html="true" class="btn btn-link">
-                        <i class="fa fa-ellipsis-h" ></i>
-                    </button>
-                </div>
-            </div> -->
-            <!-- @endforeach   -->
-        <!-- </div>     -->
-        </div>      
-        </main>
+          </div>
+        </div>
+      
       
       
       
         <!--modals-->
         <div class="modal fade" id="add-modal-collab" tabindex="-1" role="dialog" aria-labelledby="modalInvite"
-          aria-hidden="true">
+           data-bs-backdrop="static">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -103,23 +205,32 @@
               <div class="modal-body">
                 <form>
                   <div class="form-group collab">
-                    <label>Collaborators can</label>
+                    <!-- <label>Collaborators can</label>
                     <h4 id="broadInvite" class="text-dark">Do almost every thing
                       <button type="button" class="next bg-white p-2 float-right" data-toggle="modal"
                         data-target="#access-modal-board">
                         <span><i class="fas fa-greater-than"></i></span>
                       </button>
-                    </h4>
+                    </h4> -->
+                    
+                    <div id="invitedEmails">
+                      <ul id="invitedEmailList" class="invited-email-list">
+      </ul>
+      
+                  </div>
                     <div class="search-container mt-5">
-                      <input type="text" id="searchInput" class="form-control form-control-lg rounded-5"
+                      <input type="text" id="searchInput" autocomplete="off" class="form-control form-control-lg rounded-5"
                         placeholder="Search by email">
                       <i class="fas fa-search search-icon"></i>
                     </div>
+                    <div id="emailOptions">
+                    </div>
+      
                   </div>
               </div>
       
               <div class="modal-footer">
-                <button type="submit" href="./board.html" class="btn btn-secondary rounded-5">Invite</button>
+                <button type="button" class="btn btn-secondary rounded-5" id="inviteButton" >Invite</button>
               </div>
               </form>
             </div>
@@ -165,10 +276,29 @@
               </div>
             </div>
           </div>
-        <!-- Main Div ends -->
-    </div>
-    </div>
-    <!-- Main Div ends -->
+      </div>
+            <div class="container m-5">
+                      <div id="allPins" class="card-columns" style="display: none;">
+                          <!-- @foreach ($posts as $p) -->
+                          <div class="card border-white">
+                              <a href="./singlePost.html" >
+                                  <img class="card-img-top rounded-conrners preview"  src="/src/images/pexels-photo-674010.jpeg" alt="alt">
+                              </a>
+                              <div class="card-footer d-flex justify-content-between mb-0" style="background-color: transparent; border-top : none;">
+                                  <p class="text-secondary">Title</p>
+                                  <button type="button" data-toggle="tooltip" data-placement="top" title="tooltip" data-html="true" class="btn btn-link">
+                                      <i class="fa fa-ellipsis-h" ></i>
+                                  </button>
+                              </div>
+                          </div>
+                          
+                          </div>
+                          </div>
+          </main>
+          <!-- Main Div ends -->
+        </div>
+        
+    
     <%- include('../layout/scripts'); %>
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -185,5 +315,8 @@
             // });
         });
     </script>
+    <script src="/js/boards.js"></script>
+    <script src="/js/add-post.js"></script>
+
 </body>
 </html>

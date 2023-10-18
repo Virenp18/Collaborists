@@ -55,10 +55,10 @@ app.use('/api/boards', boardRoutes);
 const keys = { APPSETTING_BACK_END_URL: process.env.APPSETTING_BACK_END_URL} ;
 
 app.get('/', function(req, res) {
-    res.render('pages/index',keys);
+    res.render('pages/register',keys);
 });
 
-const pages = ['create','profile','boards'];
+const pages = ['create','profile','boards','singlePost','login','edit','register'];
 
 pages.forEach(pageName => {
     app.get(`/pages/${pageName}`, function(req, res) {
