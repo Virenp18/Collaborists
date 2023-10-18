@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../layout/head'); %>
+</head>
+<body>
+    <!-- Main Div starts -->
+    <div id="app">
+        <!-- Navigation starts -->
+        <%- include('../layout/header'); %>
+        <!-- Navigation ends -->
+
+        <!-- Main Div starts -->
+        <main class="py-4">
+            <div class="container">
+                <h1 class="text-center">Publish New Post</h1>
+                    <form method="POST" enctype="multipart/form-data" onsubmit="return false;" id="addBoardPin">
+                        <div class="form-row">                            
+                            <div class="col-md-6"> 
+                                <div class="form-group">
+                                    <div class="drag-area">                                                    
+                                        <div class="icon">
+                                            <i class="fas fa-images"></i>
+                                        </div>                        
+                                        <span class="header">Drag and Drop</span>
+                                        <span class="header">or <span class="button">browse</span></span>
+                                        <input type="file" class="input-browse" id="imageInput" hidden value=""/> 
+                                    </div>
+                                </div>                                                     
+                                 
+                         </div>
+                            <div class="col-md-6">                
+                                <div class="form-group mt-5 ">
+                                    <label for="title" class="sr-only">Post title</label>
+                                    <input name="title" value="" type="text"  class="form-control form-control-lg" id="title" placeholder="Post title">
+                                </div>
+                                <div class="form-group  mt-4">
+                                    <label for="desc" class="sr-only">Post description</label>
+                                    <textarea name="description" class="form-control form-control-lg" id="desc" rows="3" placeholder="Post description"></textarea>
+                                </div>                            
+                                <button type="submit" class="btn btn-danger btn-block mt-4">Publish</button>
+                            </div>                            
+                        </div>                        
+                            <a href="../index.html" class="text-muted">Cancel post</a>                        
+                    </form>
+            </div>
+        </main>
+        <!-- Main Div ends -->
+    </div>
+    <!-- Main Div ends -->
+    <%- include('../layout/scripts'); %>
+    <script src="/js/drag.js"></script>
+    <script src="/js/add-post.js"></script>
+</body>
+</html>

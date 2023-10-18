@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../layout/head'); %>
+    <style>
+      /* Remove borders and box shadows from the modal and its components */
+    .modal-content {
+      border: none;
+      box-shadow: none;
+    }
+
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+      border: none;
+    }
+
+    .btn.dropdown-toggle::after {
+      display: none;
+    }
+    </style>
+</head>
+<body>
+    <!-- Main Div starts -->
+    <div id="app">
+        <!-- Navigation starts -->
+        <%- include('../layout/header'); %>
+        <!-- Navigation ends -->
+
+        <!-- Main Div starts -->
+        <main class="py-2">
+          <div class="container">
+            <div class="edit-board text-center pt-5">
+              <h1>Viren</h1>
+                <button class="btn dropdown-toggle text-decoration-none bg-light rounded-5" id="dropdownBtn1"
+                  data-bs-toggle="dropdown">
+                  <i class="fas fa-ellipsis-h  fa-2x"></i>
+                </button>
+                <ul class="dropdown-menu rounded-4">
+                  <li><a class="dropdown-item" href="#">Edit Board</a></li>
+                  <li><a class="dropdown-item" href="#">Share</a></li>
+                </ul>
+            </div>
+            <div class="addCollab text-center">
+              <button class="btn rounded-5 bg-body-secondary" data-toggle="modal" data-target="#add-modal-collab"><i
+                  class="fas fa-plus fa-3x"></i></button>
+            </div>  
+            <a href="/pages/create" class="btn btn-danger btn-lg btn-block mt-5">Add New Idea</a>
+          <!-- <div class="card-columns"> -->
+            <!-- @foreach ($posts as $p) -->
+            
+            <!-- <div class="card border-white">
+                <a href="pages/singlePost.html" >
+                    <img class="card-img-top rounded-conrners preview"  src="/img/pexels-photo-674010.jpeg" alt="alt">
+                </a>
+                <div class="card-footer d-flex justify-content-between mb-0" style="background-color: transparent; border-top : none;">
+                    <p class="text-secondary">Title</p>
+                    <button type="button" data-toggle="tooltip" data-placement="top" title="tooltip" data-html="true" class="btn btn-link">
+                        <i class="fa fa-ellipsis-h" ></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card border-white">
+                <a href="pages/singlePost.html" >
+                    <img class="card-img-top rounded-conrners preview"  src="/img/pexels-photo-674010.jpeg" alt="alt">
+                </a>
+                <div class="card-footer d-flex justify-content-between mb-0" style="background-color: transparent; border-top : none;">
+                    <p class="text-secondary">Title</p>
+                    <button type="button" data-toggle="tooltip" data-placement="top" title="tooltip" data-html="true" class="btn btn-link">
+                        <i class="fa fa-ellipsis-h" ></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card border-white">
+                <a href="pages/singlePost.html" >
+                    <img class="card-img-top rounded-conrners preview"  src="/img/pexels-photo-674010.jpeg" alt="alt">
+                </a>
+                <div class="card-footer d-flex justify-content-between mb-0" style="background-color: transparent; border-top : none;">
+                    <p class="text-secondary">Title</p>
+                    <button type="button" data-toggle="tooltip" data-placement="top" title="tooltip" data-html="true" class="btn btn-link">
+                        <i class="fa fa-ellipsis-h" ></i>
+                    </button>
+                </div>
+            </div> -->
+            <!-- @endforeach   -->
+        <!-- </div>     -->
+        </div>      
+        </main>
+      
+      
+      
+        <!--modals-->
+        <div class="modal fade" id="add-modal-collab" tabindex="-1" role="dialog" aria-labelledby="modalInvite"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title font-weight-bolder" id="modalInvite">Invite Collborators</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group collab">
+                    <label>Collaborators can</label>
+                    <h4 id="broadInvite" class="text-dark">Do almost every thing
+                      <button type="button" class="next bg-white p-2 float-right" data-toggle="modal"
+                        data-target="#access-modal-board">
+                        <span><i class="fas fa-greater-than"></i></span>
+                      </button>
+                    </h4>
+                    <div class="search-container mt-5">
+                      <input type="text" id="searchInput" class="form-control form-control-lg rounded-5"
+                        placeholder="Search by email">
+                      <i class="fas fa-search search-icon"></i>
+                    </div>
+                  </div>
+              </div>
+      
+              <div class="modal-footer">
+                <button type="submit" href="./board.html" class="btn btn-secondary rounded-5">Invite</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      
+      
+        <div class="modal fade" id="access-modal-board" tabindex="-1" role="dialog" aria-labelledby="modalAccess"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="back bg-white me-5 p-2 mt-2" data-dismiss="modal">
+                  <span><i class="fas fa-less-than"></i></span>
+                </button>
+                <h1 class="modal-title font-weight-bolder" id="modalAccess">Collborators Can</h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label>Permissions</label>
+                    <div class="form-check">
+                      <input type="radio" class="form-check-input text-black-50" id="radio1" name="boardAccess" checked>
+                      <h3>Do almost everything</h3><span>Move and delete Posts and sections and comment and react
+                        <label class="form-check-label" for="radio1"></label></span>
+                    </div>
+                    <div class="form-check mt-5">
+                      <input type="radio" class="form-check-input" id="radio2" name="boardAccess">
+                      <h3>Save and Comment.</h3><span>Save, comment and react to a post.</span>
+                      <label class="form-check-label" for="radio2"></label>
+                    </div>
+                    <div>
+      
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" href="./board.html" class="btn btn-secondary rounded-5">Done</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        <!-- Main Div ends -->
+    </div>
+    </div>
+    <!-- Main Div ends -->
+    <%- include('../layout/scripts'); %>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      socket.on('data-change', (data) => {
+        console.log(data);
+            // const dataList = document.getElementById('data-list');
+            // dataList.innerHTML = ''; // Clear the existing list
+
+            // data.forEach((entry) => {
+            //     const listItem = document.createElement('li');
+            //     listItem.textContent = entry.name; // Adjust this to display the actual data
+            //     dataList.appendChild(listItem);
+            // });
+        });
+    </script>
+</body>
+</html>
