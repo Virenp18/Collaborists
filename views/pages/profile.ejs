@@ -25,8 +25,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <!-- @if(Auth()->user()->avatar === null) -->
-                            <img style="width: 200px; height: 200px" src="/img/profile_picture.png"
-                                class="rounded-circle mx-auto d-block img-thumbnail" alt="profile_pic_">
+                            <img style="width: 200px; height: 200px" src="" id="profile_pic"
+                                class="rounded-circle mx-auto d-block img-thumbnail">
                             <!-- @else -->
                             <!-- <img style="width: 200px; height: 200px" src="/images/profiles/{{Auth()->user()->avatar}}" class="rounded-circle mx-auto d-block img-thumbnail" alt="profile_pic_"> -->
                             <!-- @endif -->
@@ -45,10 +45,10 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <h2>Viren
+                            <h2><div id="profile_uname">Viren</div>
                                 <!-- @if ( $user->id  ==  auth()->id())  -->
-                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal"
-                                    data-target="#edit_name_modal">Edit</button>
+                                <!-- <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal"
+                                    data-target="#edit_name_modal">Edit</button> -->
                                 <!-- @endif -->
                             </h2>
                             <p>Joined: 18 January 2023</p>
@@ -70,7 +70,7 @@
                             <div class="card-columns">
                                 <!-- @foreach ($user->posts as $p) -->
                                 <div class="card border-white">
-                                    <a href="./singlePost.html">
+                                    <a href="/pages/singlePost">
                                         <img class="card-img-top rounded-conrners preview"
                                             src="/img/pexels-photo-674010.jpeg" alt="alt">
                                     </a>
@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                                 <div class="card  border-white">
-                                    <a href="./singlePost.html">
+                                    <a href="/pages/singlePost">
                                         <img class="card-img-top rounded-conrners preview"
                                             src="/img/pexels-photo-674010.jpeg" alt="alt">
                                     </a>
@@ -98,7 +98,7 @@
                                     </div>
                                 </div>
                                 <div class="card  border-white">
-                                    <a href="./singlePost.html">
+                                    <a href="/pages/singlePost">
                                         <img class="card-img-top rounded-conrners preview"
                                             src="/img/pexels-photo-674010.jpeg" alt="alt">
                                     </a>
@@ -188,10 +188,11 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="#" enctype="multipart/form-data">
-                                    <div class="custom-file">
-                                        <input type="file" name="avatar" class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                <form method="POST" action="/uploadProfilePic" enctype="multipart/form-data" id="uploadProfilePicForm">
+                                    <div >
+                                        <input type="file" name="avatar" id="avatar" required>
+                                        <label class="" for="customFile">Choose file</label>
+                                        <input type="hidden" name="user_id" value="" class="user_id">
                                     </div>
                             </div>
                             <div class="modal-footer">
@@ -236,7 +237,7 @@
     </div>
     <!-- Main Div ends -->
     <%- include('../layout/scripts'); %>
-    <script src="/js/boards.js"></script>
+    <script src="/js/profile-detail.js"></script>
 </body>
 
 </html>

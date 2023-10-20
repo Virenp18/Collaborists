@@ -9,16 +9,26 @@
         </form>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item mr-2">                            
-                    <a href="/pages/profile">
-                        <img src="/img/profile_picture.png" alt="" class="avatar nav-mobile">
-                        <span class="nav-pc">My profile</span> 
-                    </a>                        
+                <li class="nav-item mr-2 isLogin" id="navProfileBtn">                            
+                    <!-- <a href=""> -->
+                        <img src="" alt="" class="avatar nav-mobile" id="nav_image_logo">
+                        <span class="nav-pc" id="navUserName">My profile</span> 
+                    <!-- </a>                         -->
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mr-2 isLogin">
                     <a href="/pages/create" class="btn btn-danger ">
                         <i class="fas fa-plus nav-mobile"></i>
                         New post
+                    </a>
+                </li>
+                <li class="nav-item mr-2 isLogin" id="navlogoutButton">
+                    <button class="btn btn-danger">
+                        <i class="fas fa-power-off nav-mobile"></i>
+                    </button>
+                </li>
+                <li class="nav-item notLogin">
+                    <a href="/pages/login" class="btn btn-danger">
+                        Login
                     </a>
                 </li>
             </ul>

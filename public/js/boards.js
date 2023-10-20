@@ -6,6 +6,7 @@ $(document).ready(function () {
     const suggestionsContainer = document.getElementById("emailOptions");
     const invitedEmailList = document.getElementById("invitedEmailList");
     const inviteButton = document.getElementById("inviteButton");
+    
     function AddEmail(email) {
       const invitedEmailElement = createInvitedEmailElement(email);
       invitedEmailList.appendChild(invitedEmailElement);
