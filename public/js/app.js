@@ -1,7 +1,9 @@
 $(document).ready(function(){
     const loginUser = null;
     checkLocalStorage();
-    fetchBookDetails();
+    if(loginUser){        
+        fetchBookDetails();
+    }
     $('[data-toggle="tooltip"]').tooltip();
     $('#navlogoutButton').click(onDoubleClickProfile);
     $('#navProfileBtn').click(profileBtnClick);
