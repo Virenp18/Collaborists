@@ -6,9 +6,6 @@ const connection = mysql.createConnection({
     password: '',
     database: 'collaborist',
 });
-
-
-// Connect to the database
 connection.connect(err => {
   if (err) {
     console.error('Error connecting to the database: ' + err.stack);
@@ -16,4 +13,5 @@ connection.connect(err => {
   }
   console.log('Connected to the database!');
 });
-module.exports = connection;
+
+module.exports = connection; // Export the database connection object

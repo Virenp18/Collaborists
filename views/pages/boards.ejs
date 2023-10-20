@@ -3,41 +3,7 @@
 <head>
     <%- include('../layout/head'); %>
     <style>
-      /* Remove borders and box shadows from the modal and its components */
    
-    .rounded-conrners {
-      border-radius: 20px;
-      border: none;
-    }
-
-    .preview {
-      border: none;
-    }
-
-    .preview:hover {
-      border-style: solid;
-      border-width: medium;
-      border-color: #FF4136;
-    }
-
-    .avatar {
-      /* vertical-align: middle; */
-      width: 38.55px;
-      height: 38.55px;
-      border-radius: 50%;
-    }
-
-    /* Remove borders and box shadows from the modal and its components */
-    .modal-content {
-      border: none;
-      box-shadow: none;
-    }
-
-    .modal-header,
-    .modal-body,
-    .modal-footer {
-      border: none;
-    }
 
     .btn.dropdown-toggle::after {
       display: none;
@@ -270,7 +236,7 @@ select.permissions-select{
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="submit" href="./board.html" class="btn btn-secondary rounded-5">Done</button>
+                    <button type="submit" href="/" class="btn btn-secondary rounded-5">Done</button>
                   </div>
                 </form>
               </div>
@@ -281,7 +247,7 @@ select.permissions-select{
                       <div id="allPins" class="card-columns" style="display: none;">
                           <!-- @foreach ($posts as $p) -->
                           <div class="card border-white">
-                              <a href="./singlePost.html" >
+                              <a href="./singlePost" >
                                   <img class="card-img-top rounded-conrners preview"  src="/src/images/pexels-photo-674010.jpeg" alt="alt">
                               </a>
                               <div class="card-footer d-flex justify-content-between mb-0" style="background-color: transparent; border-top : none;">

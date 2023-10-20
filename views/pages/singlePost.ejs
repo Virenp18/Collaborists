@@ -1,89 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%- include('../layout/head'); %>
 
-        <style> 
-            .rounded-conrners {
-                border-radius: 20px;
-                border: none;
+<head>
+    <%- include('../layout/head'); %>
+
+        <style>
+            .icon-container i{
+             
+                margin-right: 30px;
             }
-            .preview {
-                border: none;
-            }       
-            .preview:hover {
-                border-style: solid;
-                border-width: medium;
-                border-color: #FF4136;
+
+           i:hover{
+            border: #757575;
+           }
+
+            .emailOptions {
+                padding: 10px;
+                cursor: pointer;
+                margin-left: 4%;
+                font-size: medium;
+                width: 430px;
+                border: black;
             }
-            .avatar {
-                /* vertical-align: middle; */
-                width: 38.55px;
-                height: 38.55px;
-                border-radius: 50%;
+
+            .emailOptions:hover {
+                background-color: #e4e4e4;
+
             }
-            /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
-            @media screen and (max-width: 500px) {
-                .nav-pc {
-                    display: none;
-                }
-            }    
+
+            /* Style for the links */
+            li {
+                color: rgb(239, 80, 80);
+                /* Blue color for links */
+                text-decoration: none;
+                /* Remove underlines */
+                font-size: 17px;
+            }
+
+            .email-link {
+                flex: 1;
+                /* Allow the email link to take remaining space */
+                text-decoration: none;
+                /* Remove underlines for the link */
+                color: #333;
+                /* Text color */
+            }
+
+            #sharebutton {
+                margin-top: 5px;
+
+            }
+
+            h5 {
+                text-align: center;
+            }
         </style>
-    </head>
+</head>
+
 <body>
     <div id="app">
         <!-- Navigation starts -->
         <%- include('../layout/header'); %>
 
-  
-        <!-- Main Div starts -->
-        <main class="py-4 px-4">
-            <div class="container">
-                <div class="row"> 
-                    <!-- image and back,edit and delete -->
-                    <div class="col-md-6">
-                        <img src="/img/pexels-photo-674010.jpeg" class="img-fluid rounded" alt="Responsive image">
-                        <div class="row justify-content-between mt-2">
-                            <div class="col-md-12">
-                            <div class="float-left">
-                                <a href="/" class="text-secondary"> Back</a>
-                            </div>
-                            <!-- @auth -->
-                            <div class="float-right">  
-                                <!-- @if ( $user->id  ==  $post->user_id) -->
-                                    <form action="#" class="form-inline">
-                                        <!-- @method('DELETE')
+
+            <!-- Main Div starts -->
+            <main class="py-4 px-4">
+                <div class="container">
+                    <div class="row">
+                        <!-- image and back,edit and delete -->
+                        <div class="col-md-6">
+                            <img src="/img/pexels-photo-674010.jpeg" class="img-fluid rounded" alt="Responsive image">
+                            <div class="row justify-content-between mt-2">
+                                <div class="col-md-12">
+                                    <div class="float-left">
+                                        <a href="/" class="text-secondary"> Back</a>
+                                    </div>
+                                    <!-- @auth -->
+                                    <div class="float-right">
+                                        <!-- @if ( $user->id  ==  $post->user_id) -->
+                                        <form action="#" class="form-inline">
+                                            <!-- @method('DELETE')
                                         @csrf  -->
-                                        <div class="form-group mb-2 mr-2">
-                                        <a href="/pages/edit" class="btn btn-secondary btn-sm mb-2">Edit post</a>
-                                        </div>
-                                        <div class="form-group mb-2">    
-                                        <button type="submit" class="btn btn-danger btn-sm mb-2">Delete</button>
-                                        </div>
-                                    </form>
-                                <!-- @endif -->
+                                            <div class="form-group mb-2 mr-2">
+                                                <a href="/pages/edit" class="btn btn-secondary btn-sm mb-2">Edit
+                                                    post</a>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <button type="submit" class="btn btn-danger btn-sm mb-2">Delete</button>
+                                            </div>
+                                        </form>
+                                        <!-- @endif -->
+                                    </div>
+                                    <!-- @endauth -->
+                                </div>
+
+
                             </div>
-                            <!-- @endauth -->
-                            </div>
-                            
-                            
                         </div>
-                    </div>
-                    
-                    
-                    <!-- Date, Likes, Like button, title, Body, Comments, Post comment -->
-                    <div class="col-md-6">
+
+
+                        <!-- Date, Likes, Like button, title, Body, Comments, Post comment -->
+                        <div class="col-md-6">
                             <div class="row justify-content-between">
-                                <div><p class="text-secondary">18 January 2023</p></div>
-                                <!-- @auth -->
-                                <div><strong><b>20</b> Likes</strong></div> 
                                 <div>
-                                    
+                                    <button class="btn rounded-5 bg-body-secondary" data-toggle="modal"
+                                        data-target="#share-modal"><i class="far fa-share-square" style="color: #232424;"></i></button>
+                                </div>
+                                <div>
+                                    <p class="text-secondary">18 January 2023</p>
+                                </div>
+                                <!-- @auth -->
+                                <div><strong><b>20</b> Likes</strong></div>
+                                <div>
+
                                     <!-- @if($post->liked() ) -->
                                     <!-- <form action="/post/{{$post->id}}/unlike" method="POST"> -->
-                                        <!-- @csrf -->
-                                        <!-- @method('DELETE') -->
-                                        <!-- <input type="hidden" name="post_id" value="{{$post->id}}">
+                                    <!-- @csrf -->
+                                    <!-- @method('DELETE') -->
+                                    <!-- <input type="hidden" name="post_id" value="{{$post->id}}">
                                         <button type="submit" class="btn btn-danger">Unlike</button> -->
                                     <!-- </form> -->
                                     <!-- @else -->
@@ -100,92 +134,155 @@
                                 <h4>Title</h4>
                             </div>
                             <div class="row">
-                            <p>
-                                Description
-                            </p>
+                                <p>
+                                    Description
+                                </p>
                             </div>
                             <!-- comments -->
                             <div class="row">
-                            
-            
-                            
-                            <!-- @if ($post->comments->count()) -->
-                                
+
+
+
+                                <!-- @if ($post->comments->count()) -->
+
                                 <div class="panel panel-white post panel-shadow">
-                                        <h3>Comments</h3>
-                                        <!-- @foreach ($post->comments as $comment) -->
-                                         
-                                         <!-- Single Comment -->
-                                        <div class="media mb-4">
-                                            <!-- @if(Auth()->user()->avatar === null) -->
-                                                <img class="d-flex mr-3 rounded-circle" src="../src/images/pexels-photo-674010.jpeg" width="60" height="60"  alt="profile_pic_{{Auth()->user()->name}}">
-                                            <!-- @else -->
-                                                <!-- <img class="d-flex mr-3 rounded-circle" src="/images/profiles/{{Auth()->user()->avatar}}" width="60" height="60"  alt="profile_pic_{{Auth()->user()->name}}"> -->
-                                            <!-- @endif -->
-                                            <div class="media-body">
-                                                <h5 class="mt-0"><strong>Viren Pratap</strong>  <span class="badge badge-danger badge-pill"><i class="fas fa-plus"></i> Follow</span> <a class="text-secondary pl-2">18/01/1997</a></h5>
-                                                <p>Nice Picture :)</p>
-                                            </div>
-                                        </div>       
-                                        <div class="media mb-4">
-                                            <!-- @if(Auth()->user()->avatar === null) -->
-                                                <img class="d-flex mr-3 rounded-circle" src="../src/images/pexels-photo-674010.jpeg" width="60" height="60"  alt="profile_pic_{{Auth()->user()->name}}">
-                                            <!-- @else -->
-                                                <!-- <img class="d-flex mr-3 rounded-circle" src="/images/profiles/{{Auth()->user()->avatar}}" width="60" height="60"  alt="profile_pic_{{Auth()->user()->name}}"> -->
-                                            <!-- @endif -->
-                                            <div class="media-body">
-                                                <h5 class="mt-0"><strong>Viren Pratap</strong> <span class="badge badge-danger badge-pill"><i class="fas fa-plus"></i> Follow</span> <a class="text-secondary pl-2">18/01/1997</a></h5>
-                                                <p>Nice Picture :)</p>
-                                            </div>
-                                        </div>       
-                                        <!-- @endforeach -->
-                                </div> 
-                                    
-                                    
-                            <!-- @endif -->
+                                    <h3>Comments</h3>
+                                    <!-- @foreach ($post->comments as $comment) -->
+
+                                    <!-- Single Comment -->
+                                    <div class="media mb-4">
+                                        <!-- @if(Auth()->user()->avatar === null) -->
+                                        <img class="d-flex mr-3 rounded-circle" src="/img/pexels-photo-674010.jpeg"
+                                            width="60" height="60" alt="profile_pic_{{Auth()->user()->name}}">
+                                        <!-- @else -->
+                                        <!-- <img class="d-flex mr-3 rounded-circle" src="/images/profiles/{{Auth()->user()->avatar}}" width="60" height="60"  alt="profile_pic_{{Auth()->user()->name}}"> -->
+                                        <!-- @endif -->
+                                        <div class="media-body">
+                                            <h5 class="mt-0"><strong>Viren Pratap</strong> <span
+                                                    class="badge badge-danger badge-pill"><i class="fas fa-plus"></i>
+                                                    Follow</span> <a class="text-secondary pl-2">18/01/1997</a></h5>
+                                            <p>Nice Picture :)</p>
+                                        </div>
+                                    </div>
+                                    <div class="media mb-4">
+                                        <!-- @if(Auth()->user()->avatar === null) -->
+                                        <img class="d-flex mr-3 rounded-circle" src="/img/pexels-photo-674010.jpeg"
+                                            width="60" height="60" alt="profile_pic_{{Auth()->user()->name}}">
+                                        <!-- @else -->
+                                        <!-- <img class="d-flex mr-3 rounded-circle" src="/images/profiles/{{Auth()->user()->avatar}}" width="60" height="60"  alt="profile_pic_{{Auth()->user()->name}}"> -->
+                                        <!-- @endif -->
+                                        <div class="media-body">
+                                            <h5 class="mt-0"><strong>Viren Pratap</strong> <span
+                                                    class="badge badge-danger badge-pill"><i class="fas fa-plus"></i>
+                                                    Follow</span> <a class="text-secondary pl-2">18/01/1997</a></h5>
+                                            <p>Nice Picture :)</p>
+                                        </div>
+                                    </div>
+                                    <!-- @endforeach -->
+                                </div>
+
+
+                                <!-- @endif -->
                             </div>
-            
+
                             <!-- @auth -->
                             <!-- <div class="col-12"> -->
                             <!-- @include ('errors') -->
                             <form action="">
                                 <!-- @csrf -->
-                                
+
                                 <div class="form-group">
                                     <label for="body" class="sr-only">Add comment</label>
-                                    <textarea name="body" class="form-control form-control-lg" id="bosy" rows="3" placeholder="Add comment">Comment here...</textarea>
+                                    <textarea name="body" class="form-control form-control-lg" id="bosy" rows="3"
+                                        placeholder="Add comment">Comment here...</textarea>
                                 </div>
-                                
+
                                 <button type="submit" class="btn btn-secondary float-right">Add comment</button>
-                                
+
                             </form>
                             <!-- </div> -->
                             <!-- @endauth -->
-            
-                           
-                            
+
+
+
+                        </div>
                     </div>
-                </div>    
-            </div>
-        </main>
-        <!-- Main Div ends -->
+                </div>
+                <div class="modal fade" id="share-modal" tabindex="-1" role="dialog" aria-labelledby="share"
+                    data-bs-backdrop="static">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title font-weight-bolder" id="share">SHARE</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <h5>Send on Collab</h5>
+                                    <div id="invitedEmails">
+                                        <ul id="invitedEmailList" class="invited-email-list">
+                                        </ul>
+
+                                    </div>
+                                    <div class="search-container mt-5">
+                                        <input type="text" id="searchInput" autocomplete="off"
+                                            class="form-control form-control-lg rounded-5"
+                                            placeholder="Search by email">
+                                        <i class="fas fa-search search-icon"></i>
+
+                                    </div>
+
+                                    <div id="emailOptions">
+                                    </div>
+                                    <button type="button" class="btn btn-secondary rounded-5"
+                                        id="sharebutton">send</button>
+
+                            </div>
+                            </form>
+                            <div class="form-group text-center icon-container">
+
+                                <h5>Share</h5>
+
+                                <a href="https://www.facebook.com/YourPageURL" target="_blank">
+                                    <i class="fab fa-facebook fa-3x" style="color: #2a497e;"></i>
+                                </a>
+                                <a href="https://web.whatsapp.com/" target="_blank">
+                                    <i class="fab fa-whatsapp fa-3x" style="color: #1dd765;"></i>
+                                </a>
+                                <a href="mailto:contact@example.com" target="_blank">
+                                    <i class="far fa-envelope fa-3x" style="color: #757575;"></i>
+                                </a>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+    </div>
+    </main>
+    <!-- Main Div ends -->
     </div>
 </body>
- 
-<%- include('../layout/scripts'); %>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  const socket = io();
-  socket.on('data-change', (data) => {
-    console.log(data);
-        // const dataList = document.getElementById('data-list');
-        // dataList.innerHTML = ''; // Clear the existing list
 
-        // data.forEach((entry) => {
-        //     const listItem = document.createElement('li');
-        //     listItem.textContent = entry.name; // Adjust this to display the actual data
-        //     dataList.appendChild(listItem);
-        // });
-    });
-</script>
+<%- include('../layout/scripts'); %>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        socket.on('data-change', (data) => {
+            console.log(data);
+            // const dataList = document.getElementById('data-list');
+            // dataList.innerHTML = ''; // Clear the existing list
+
+            // data.forEach((entry) => {
+            //     const listItem = document.createElement('li');
+            //     listItem.textContent = entry.name; // Adjust this to display the actual data
+            //     dataList.appendChild(listItem);
+            // });
+        });
+    </script>
+    <script src="/js/boards.js"></script>
+    <script src="/js/upload.js"></script>
+
+
 </html>
