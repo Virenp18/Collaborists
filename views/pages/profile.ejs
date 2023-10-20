@@ -3,6 +3,8 @@
 
 <head>
     <%- include('../layout/head'); %>
+    <script src="/js/upload.js"></script>
+
 </head>
 
 <body>
@@ -15,12 +17,14 @@
             <!-- Main Div starts -->
             <main class="py-2 mainBodyProfile">
                 <div class="container">
-                    <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownBtn" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-plus nav-mobile"></i>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownBtn">
                         <a class="dropdown-item" href="/pages/create">Post</a>
-                        <button class="btn dropdown-item" data-toggle="modal" data-target="#create-modal-board">Board</button>
+                        <button class="btn dropdown-item" data-toggle="modal"
+                            data-target="#create-modal-board">Board</button>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
@@ -159,7 +163,8 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="#">
+                                <form action="/update-post" method="POST" enctype="multipart/form-data">
+
                                     <div class="form-group ">
                                         <label for="moto" class="sr-only">User moto</label>
                                         <textarea name="moto" class="form-control form-control-lg" id="moto" rows="3"
@@ -177,12 +182,13 @@
                 </div>
 
                 <!-- Modal -->
+                <!-- ... other content ... -->
                 <div class="modal fade" id="edit_avatar_modal" tabindex="-1" role="dialog"
                     aria-labelledby="modalAvatarLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalAvatarLabel">Edit Avtar</h5>
+                                <h5 class="modal-title" id="modalAvatarLabel">Edit Avatar</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -194,16 +200,17 @@
                                         <label class="" for="customFile">Choose file</label>
                                         <input type="hidden" name="user_id" value="" class="user_id">
                                     </div>
+                                </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
-                                    edit</button>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary" id="save-avatar-button">Save
+                                    Changes</button>
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
+
                 <!--modal-create-->
                 <div class="modal fade" id="create-modal-board" tabindex="-1" role="dialog" aria-labelledby="modalBoard"
                     aria-hidden="true">
@@ -231,8 +238,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
+    </div>
+    </main>
     <!-- Main Div ends -->
     </div>
     <!-- Main Div ends -->

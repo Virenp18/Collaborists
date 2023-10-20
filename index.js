@@ -17,6 +17,7 @@ const boardRoutes = require('./src/boardsRoutes');
 const userRoutes = require('./src/userRoutes');
 const router = require("./src/boardsRoutes");
 
+
 io.on('connection', (socket)=>{
   console.log('A user connected');
   // Handle the database changes and send updates to the client
@@ -93,7 +94,7 @@ app.get('/', function(req, res) {
     res.render('pages/index',keys);
 });
 
-const pages = ['create','profile','boards','singlePost','login','edit','register'];
+const pages = ['create','profile','boards','singlePost','login','edit','register','search','setPassword','resetPassword','verify'];
 
 pages.forEach(pageName => {
     app.get(`/pages/${pageName}`, function(req, res) {
