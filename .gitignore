@@ -1,5 +1,5 @@
 /.vscode
-# /src/images
+/.vs
 .env
 /node_modules
 /public/img/uploads
