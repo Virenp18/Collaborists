@@ -2,6 +2,7 @@ $(document).ready(function(){
     const loginUser = null;
     checkLocalStorage();
     fetchBookDetails();
+
     $('[data-toggle="tooltip"]').tooltip();
     $('#navlogoutButton').click(onDoubleClickProfile);
     $('#navProfileBtn').click(profileBtnClick);
@@ -18,7 +19,8 @@ const profileBtnClick = (event) => {
 const fetchBookDetails = async() => {
     const userId = loginUser.user_id;
     const userDetails = await makeRequest(`api/users/${userId}`, "GET");
-    console.log(userDetails.results);
+    console.log("hello => ",userDetails.results);
+
     $('#nav_image_logo').attr('src',`/img/uploads/${userDetails.results.profile_picture}`);
 }
 /**
