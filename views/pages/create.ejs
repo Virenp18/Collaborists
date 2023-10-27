@@ -14,18 +14,19 @@
         <main class="py-4">
             <div class="container">
                 <h1 class="text-center">Publish New Post</h1>
-                    <form method="POST" enctype="multipart/form-data" onsubmit="return false;" id="addBoardPin">
+                    <form method="POST" action="/api/posts/addPost" enctype="multipart/form-data" id="addNewPost">
                         <div class="form-row">                            
                             <div class="col-md-6"> 
                                 <div class="form-group">
-                                    <div class="drag-area">                                                    
+                                    <div class="drag-area">
+                                        <!-- <div class="drag-content"></div>                                                     -->
                                         <div class="icon">
                                             <i class="fas fa-images"></i>
                                         </div>                        
                                         <span class="header">Drag and Drop</span>
-                                        <span class="header">or <span class="button">browse</span></span>
-                                        <input type="file" class="input-browse" id="imageInput" hidden value=""/> 
+                                        <span class="header">or <span class="button">browse</span></span>                                         
                                     </div>
+                                    <input type="file" name="post" class="input-browse" id="imageInput" accept="image/*"/>
                                 </div>                                                     
                                  
                          </div>
@@ -37,7 +38,9 @@
                                 <div class="form-group  mt-4">
                                     <label for="desc" class="sr-only">Post description</label>
                                     <textarea name="description" class="form-control form-control-lg" id="desc" rows="3" placeholder="Post description"></textarea>
-                                </div>                            
+                                </div>     
+                                <input type="hidden" name="user_id" value="" class="user_id">                       
+                                <input type="hidden" name="board_id" value="" class="board_id">                       
                                 <button type="submit" class="btn btn-danger btn-block mt-4">Publish</button>
                             </div>                            
                         </div>                        
@@ -51,9 +54,5 @@
     <%- include('../layout/scripts'); %>
     <script src="/js/drag.js"></script>
     <script src="/js/add-post.js"></script>
-    <script src="/js/boards.js"></script>
-
-
-
 </body>
 </html>

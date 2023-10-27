@@ -628,13 +628,11 @@ pre code {
   margin-left: auto;
 }
 
-.mainBodyProfile {
-  position: relative;
-}
 #dropdownBtn {
   position: absolute;
   right: 2%;
   top: 90%;
+  z-index: 9999;
 }
 
 @media (min-width: 576px) {

@@ -14,6 +14,7 @@ dotenv.config();
 
 const connection = require('./src/database');
 const boardRoutes = require('./src/boardsRoutes');
+const postRoutes = require('./src/postRoutes');
 const userRoutes = require('./src/userRoutes');
 const router = require("./src/boardsRoutes");
 
@@ -54,44 +55,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
 
+app.use('/api/posts', postRoutes);
 app.use('/api/boards', boardRoutes);
 app.use('/api/users', userRoutes);
 
 const keys = { APPSETTING_BACK_END_URL: process.env.APPSETTING_BACK_END_URL} ;
 
-const storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-      callback(null, 'public/img/uploads/'); // "uploads" is the folder where images will be saved
-  },
-  filename: (req, file, callback) => {
-      callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-  },
-});
-const upload = multer({ storage });
-app.post('/uploadProfilePic',upload.single('avatar') , (req,res) => {  
-  if (req.file) {
-    const filename = req.file.filename;
-    const dataToUpdate = {
-      profile_picture : filename
-    };
-    const query = 'UPDATE users SET ? WHERE user_id = ?';
-    connection.query(query, [dataToUpdate,req.body.user_id], (err, results) => {
-      if (err) {
-          console.error('Error inserting data: ' + err);
-      } else {
-          // File was uploaded successfully
-          res.redirect(`/pages/profile/${req.body.user_id}`);
-      }
-  });
-    
-  } else {
-    // No file was uploaded
-    res.status(400).json({ message: 'No file uploaded' });
-  }
-});
-
 app.get('/', function(req, res) {
-    res.render('pages/index',keys);
+    res.render('pages/index', keys);
 });
 
 const pages = ['create','profile','boards','singlePost','login','edit','register','search','setPassword','resetPassword','verify'];

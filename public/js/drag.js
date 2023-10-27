@@ -2,27 +2,25 @@ const dragArea = document.querySelector('.drag-area');
 const dragText = document.querySelector('.header');
 
 let button= document.querySelector('.button');
-let input= document.querySelector('.input-browse');
+let input= document.querySelector('#imageInput');
 let file;
  
 button.onclick= () =>{
     input.click();
-
 };
 //browse
 input.addEventListener('change',function(){
-    file=this.files[0];
-    
+    file=this.files[0];    
     dragArea.classList.add('active');
     displayFile();
 });
 
 function displayFile(){
- let fileType=file.type;
+ let fileType = file.type;
     let validExtensions=['image/jpeg','image/jpg','image/png'];
 
     if(validExtensions.includes(fileType)){
-        let fileReader= new FileReader();   
+        let fileReader= new FileReader();  
     
         fileReader.onload=()=>{
             let fileURL=fileReader.result;
@@ -51,8 +49,9 @@ dragArea.addEventListener('dragleave', ()=>{
 });
 
 dragArea.addEventListener('drop', (e)=>{
-    e.preventDefault();
-    file=e.dataTransfer.files[0];
+    e.preventDefault();    
+    file = e.dataTransfer.files[0];
+    input.files = e.dataTransfer.files;
     displayFile();
 });
 

@@ -1,7 +1,7 @@
 $(document).ready(function(){
     const loginUser = null;
     checkLocalStorage();
-    fetchBookDetails();
+    fetchUserDetails();
 
     $('[data-toggle="tooltip"]').tooltip();
     $('#navlogoutButton').click(onDoubleClickProfile);
@@ -16,12 +16,16 @@ const profileBtnClick = (event) => {
     window.location.href = "/pages/profile/" + loginUser.user_id;
 }
 
-const fetchBookDetails = async() => {
-    const userId = loginUser.user_id;
-    const userDetails = await makeRequest(`api/users/${userId}`, "GET");
-    console.log("hello => ",userDetails.results);
-
-    $('#nav_image_logo').attr('src',`/img/uploads/${userDetails.results.profile_picture}`);
+const fetchUserDetails = async() => {
+    if(loginUser){
+        const userId = loginUser.user_id;
+        const userDetails = await makeRequest(`api/users/${userId}`, "GET");
+        if(userDetails.results.profile_picture){
+            $('#nav_image_logo').attr('src',`/img/uploads/${userDetails.results.profile_picture}`);
+        }else{
+            $('#nav_image_logo').attr('src',`/img/profile_picture.png`);
+        }
+    }
 }
 /**
  * Util Section

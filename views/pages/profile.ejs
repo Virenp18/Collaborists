@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <h2><div id="profile_uname">Viren</div>
+                            <h2><div id="profile_uname"></div>
                                 <!-- @if ( $user->id  ==  auth()->id())  -->
                                 <!-- <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal"
                                     data-target="#edit_name_modal">Edit</button> -->
@@ -66,52 +66,17 @@
                                 <!-- @endif -->
                             </p>
                             <p>Total likes: <b>223</b></p>
-                            <p>Total followers: <b>18</b></p>
-                            <div class="card-columns">
-                                <!-- @foreach ($user->posts as $p) -->
-                                <div class="card border-white">
-                                    <a href="/pages/singlePost">
-                                        <img class="card-img-top rounded-conrners preview"
-                                            src="/img/pexels-photo-674010.jpeg" alt="alt">
-                                    </a>
-                                    <div class="card-footer d-flex justify-content-between"
-                                        style="background-color: transparent; border-top : none;">
-                                        <p class="h4 text-secondary">Title</p>
-                                        <button type="button" data-toggle="tooltip" data-placement="top" title="title"
-                                            data-html="true" class="btn btn-link">
-                                            <i class="fa fa-ellipsis-h"></i>
-                                        </button>
+                            <p>Total followers: <b id="follower_count">18</b></p>
+                            <div class="col-md-12 mx-auto" id="noPinsUploaded" style="display:none;">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <i class="fas fa-thumbtack fa-3x"></i>
+                                        <h5 class="card-title mt-3">No pins found</h5>
                                     </div>
                                 </div>
-                                <div class="card  border-white">
-                                    <a href="/pages/singlePost">
-                                        <img class="card-img-top rounded-conrners preview"
-                                            src="/img/pexels-photo-674010.jpeg" alt="alt">
-                                    </a>
-                                    <div class="card-footer d-flex justify-content-between"
-                                        style="background-color: transparent; border-top : none;">
-                                        <p class="h4 text-secondary">Title</p>
-                                        <button type="button" data-toggle="tooltip" data-placement="top" title="title"
-                                            data-html="true" class="btn btn-link">
-                                            <i class="fa fa-ellipsis-h"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card  border-white">
-                                    <a href="/pages/singlePost">
-                                        <img class="card-img-top rounded-conrners preview"
-                                            src="/img/pexels-photo-674010.jpeg" alt="alt">
-                                    </a>
-                                    <div class="card-footer d-flex justify-content-between"
-                                        style="background-color: transparent; border-top : none;">
-                                        <p class="h4 text-secondary">Title</p>
-                                        <button type="button" data-toggle="tooltip" data-placement="top" title="title"
-                                            data-html="true" class="btn btn-link">
-                                            <i class="fa fa-ellipsis-h"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- @endforeach   -->
+                            </div>
+                            <div class="card-columns" id="uploadedPins">
+                                
                             </div>
                         </div>
                     </div>
@@ -188,7 +153,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" action="/uploadProfilePic" enctype="multipart/form-data" id="uploadProfilePicForm">
+                                <form method="POST" action="/api/users/addProfilePicture" enctype="multipart/form-data" id="uploadProfilePicForm">
                                     <div >
                                         <input type="file" name="avatar" id="avatar" required>
                                         <label class="" for="customFile">Choose file</label>
