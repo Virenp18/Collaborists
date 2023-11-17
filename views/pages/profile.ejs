@@ -33,13 +33,18 @@
                             <br>
                             <div class="row mx-auto d-block">
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" data-toggle="modal" data-target="#edit_avatar_modal"
+                                    <button type="button" id="editAvatarBtn" data-toggle="modal" data-target="#edit_avatar_modal"
                                         class="btn btn-secondary btn-sm">
                                         <!-- @if($user->avatar === null)  -->
                                         <!-- Add avatar  -->
                                         <!-- @else  -->
                                         Edit avatar
                                         <!-- @endif -->
+                                    </button>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button id="messageUser" class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-sm fa-message"></i> Message
                                     </button>
                                 </div>
                             </div>
@@ -51,11 +56,11 @@
                                     data-target="#edit_name_modal">Edit</button> -->
                                 <!-- @endif -->
                             </h2>
-                            <p>Joined: 18 January 2023</p>
+                            <p id="user_joined">-</p>
                             <p class="lead">
                                 <!-- @if($user->moto === null)
                                     @if ( $user->id  ==  auth()->id()) -->
-                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal"
+                                <button type="button" id="editMotoBtn" class="btn btn-secondary btn-sm" data-toggle="modal"
                                     data-target="#edit_moto_modal">Add moto</button>
                                 <!-- @endif -->
                                 <!-- @else -->
@@ -65,8 +70,8 @@
                                 <!-- @endif -->
                                 <!-- @endif -->
                             </p>
-                            <p>Total likes: <b>223</b></p>
-                            <p>Total followers: <b id="follower_count">18</b></p>
+                            <p>Total likes: <b id="likes_count">-</b></p>
+                            <p>Total followers: <b id="follower_count">-</b></p>
                             <div class="col-md-12 mx-auto" id="noPinsUploaded" style="display:none;">
                                 <div class="card text-center">
                                     <div class="card-body">
@@ -198,11 +203,47 @@
                 </div>
             </div>
         </main>
+        <%- include('../layout/toaster'); %>
     <!-- Main Div ends -->
     </div>
     <!-- Main Div ends -->
     <%- include('../layout/scripts'); %>
     <script src="/js/profile-detail.js"></script>
+    <script>
+        const socket = io();
+        const toast = new bootstrap.Toast(document.getElementById('liveToast'));        
+        let socket_append_html = "";
+        let nav_notify_html = "";
+        socket.on('new-post', (data) => {
+            // Add a if condition where you will check that its a login user
+            const login_user = getUserFromUrl();
+            if(login_user == data.user_id){
+                socket_append_html += `<div class="card border-white">
+                            <a href="/pages/singlePost/${data.project_id}">
+                                <img class="card-img-top rounded-conrners preview"
+                                    src="/img/posts/${data.url}" alt="${data.url}">
+                            </a>
+                            <div class="card-footer d-flex justify-content-between"
+                                style="background-color: transparent; border-top : none;">
+                                <p class="h4 text-secondary">${data.title}</p>
+                                <button type="button" data-toggle="tooltip" data-placement="top" title="${data.description}"
+                                    data-html="true" class="btn btn-link">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>`;
+                nav_notify_html += `<i class="fas fa-bell fa-shake nav-mobile"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                        <span class="visually-hidden">New alerts</span>
+                                    </span>`;
+                $("#uploadedPins").append(socket_append_html);
+                $("#nav_notification").addClass('position-relative');
+                $("#nav_notification").html(nav_notify_html);
+                $('.toast-body').html('New Post Uploaded!');
+                toast.show();
+            }            
+        });        
+    </script>
 </body>
 
 </html>

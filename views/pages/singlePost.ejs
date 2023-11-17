@@ -266,10 +266,10 @@
 </body>
 
 <%- include('../layout/scripts'); %>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <!-- <script>
         const socket = io();
-        socket.on('data-change', (data) => {
+        socket.on('data', (data) => {
             console.log(data);
             // const dataList = document.getElementById('data-list');
             // dataList.innerHTML = ''; // Clear the existing list
@@ -280,6 +280,6 @@
             //     dataList.appendChild(listItem);
             // });
         });
-    </script>
+    </script> -->
     <script src="/js/boards.js"></script>
 </html>

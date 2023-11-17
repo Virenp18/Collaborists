@@ -50,3 +50,25 @@ const isLoggedUserAdmin = () => {
   
   return false;
 };
+
+function get12HourTime(date) {
+  if (!(date instanceof Date)) {
+    throw new Error('Invalid Date object provided');
+  }
+
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let ampm = hours >= 12 ? 'PM' : 'AM';
+
+  // Convert hours to 12-hour format
+  hours = hours % 12;
+  hours = hours ? hours : 12; // 12 should be displayed as 12, not 0
+
+  // Add leading zero to minutes if needed
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+
+  // Construct the 12-hour time format string
+  const timeString = `${hours}:${minutes} ${ampm}`;
+
+  return timeString;
+}

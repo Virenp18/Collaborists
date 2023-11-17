@@ -14,38 +14,11 @@ dotenv.config();
 
 const connection = require('./src/database');
 const boardRoutes = require('./src/boardsRoutes');
-const postRoutes = require('./src/postRoutes');
+const postRoutes = require('./src/postRoutes')(io);
 const userRoutes = require('./src/userRoutes');
+const chatRoutes = require('./src/chatRoutes')(io);
 const router = require("./src/boardsRoutes");
 
-
-io.on('connection', (socket)=>{
-  console.log('A user connected');
-  // Handle the database changes and send updates to the client
-  const query = 'SELECT * FROM projects';
-  connection.query(query, (err, results) => {
-    if (err) {
-        console.error('Error fetching data from the database: ' + err);
-    } else {
-        // Send the initial data to the client
-        socket.emit('data', results);
-    }
-  });
-  connection.on('change', () => {
-    // Fetch and send the updated data to the client
-    connection.query(query, (err, results) => {
-        if (err) {
-            console.error('Error fetching data from the database: ' + err);
-        } else {
-            io.sockets.emit('data-change', results);
-        }
-    });
-});
-  socket.on('disconnect', () => {
-    console.log('A user disconnected');
-});
-
-});
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -58,6 +31,7 @@ app.set('view engine', 'ejs');
 app.use('/api/posts', postRoutes);
 app.use('/api/boards', boardRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/chats', chatRoutes);
 
 const keys = { APPSETTING_BACK_END_URL: process.env.APPSETTING_BACK_END_URL} ;
 
@@ -65,7 +39,7 @@ app.get('/', function(req, res) {
     res.render('pages/index', keys);
 });
 
-const pages = ['create','profile','boards','singlePost','login','edit','register','search','setPassword','resetPassword','verify'];
+const pages = ['create','profile','boards','singlePost','login','edit','register','search','setPassword','resetPassword','verify','messages'];
 
 pages.forEach(pageName => {
     app.get(`/pages/${pageName}`, function(req, res) {
@@ -75,6 +49,9 @@ pages.forEach(pageName => {
 
 app.get('/pages/profile/:id',async (req,res) => {
   res.render('pages/profile',keys);
+});
+app.get('/pages/messages/:id',async (req,res) => {
+  res.render('pages/messages',keys);
 });
 
 // This app will run on port 3000 locahost:3000

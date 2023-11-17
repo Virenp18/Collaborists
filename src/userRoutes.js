@@ -87,7 +87,7 @@ router.post('/login', (req, res) => {
 router.get('/:id',async(req,res) => {
     const user = req.params.id;
     // get User Details
-    const query = 'SELECT * FROM users WHERE user_id = ?';
+    const query = 'SELECT users.*,SUM(projects.likes_count) as likes_count FROM users LEFT JOIN projects ON users.user_id = projects.user_id WHERE users.user_id = ?';
     db.query(query, user, (err, results) => {
         if (err) {
             console.error('Error fetching data: ' + err);

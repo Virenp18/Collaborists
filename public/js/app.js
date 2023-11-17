@@ -4,11 +4,11 @@ $(document).ready(function(){
     fetchUserDetails();
 
     $('[data-toggle="tooltip"]').tooltip();
-    $('#navlogoutButton').click(onDoubleClickProfile);
+    $('#navlogoutButton').click(onLogoutClick);
     $('#navProfileBtn').click(profileBtnClick);
 });
 
-const onDoubleClickProfile = (event) => {
+const onLogoutClick = (event) => {
     window.localStorage.removeItem("collaborist@authentication");
     window.location.href = "/pages/login";
 }

@@ -629,10 +629,10 @@ pre code {
 }
 
 #dropdownBtn {
-  position: absolute;
+  position: fixed;
   right: 2%;
   top: 90%;
-  z-index: 9999;
+  z-index: 999;
 }
 
 @media (min-width: 576px) {

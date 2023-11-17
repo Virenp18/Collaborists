@@ -23,7 +23,7 @@ router.get("/:id",(req,res)=>{
         console.error("Something Went Wrong! " + error);
     }
     
-})
+});
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
@@ -35,41 +35,52 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-router.post("/addPost",upload.single('post'), (req,res) => {
-    try {
-        const dataToInsert = {
-            user_id  : req.body.user_id,
-            title : req.body.title,
-            description : req.body.description,
-        };
-        // insert the image path in images projects
-        const query = 'INSERT INTO projects SET ?';
-        db.query(query, dataToInsert, (err, results) => {
-            if (err) {
-                res.status(400).json({ message: 'Unable to Insert the data. (INPR)' });
-            } else {
-                if (req.file) {
-                    // insert the image path in images table
-                    const data = {
-                        project_id: results.insertId,
-                        url: req.file.filename,
-                        description: req.body.description
-                    };
-                    const query2 = "INSERT INTO images SET ?";
-                    db.query(query2, data, (err, results) => {
-                        if (err) {
-                            res.status(400).json({ message: 'Unable to Insert the data. (INIM)' });
-                        } else {
-                            // File was uploaded successfully
-                            res.redirect(`/pages/profile/${req.body.user_id}`);
-                        }
-                    });
-                }
-            }
-        });
-    } catch (error) {
-       
-    }
-});
 
-module.exports = router;
+
+module.exports = (io) =>{
+    router.post("/addPost",upload.single('post'), (req,res) => {
+        try {
+            const dataToInsert = {
+                user_id  : req.body.user_id,
+                title : req.body.title,
+                description : req.body.description,
+            };
+            // insert the image path in images projects
+            const query = 'INSERT INTO projects SET ?';
+            db.query(query, dataToInsert, (err, results) => {
+                if (err) {
+                    res.status(400).json({ message: 'Unable to Insert the data. (INPR)' });
+                } else {
+                    if (req.file) {
+                        // insert the image path in images table
+                        const data = {
+                            project_id: results.insertId,
+                            url: req.file.filename,
+                            description: req.body.description
+                        };
+                        const query2 = "INSERT INTO images SET ?";
+                        db.query(query2, data, (err, results_Image_table) => {
+                            if (err) {
+                                res.status(400).json({ message: 'Unable to Insert the data. (INIM)' });
+                            } else {
+                                const io_data = {
+                                    url: req.file.filename,
+                                    title : req.body.title,
+                                    description: req.body.description,
+                                    user_id : req.body.user_id,
+                                    project_id : results.insertId
+                                };
+                                io.emit('new-post',io_data);
+                                // File was uploaded successfully
+                                res.redirect(`/pages/profile/${req.body.user_id}`);
+                            }
+                        });
+                    }
+                }
+            });
+        } catch (error) {
+           
+        }
+    });
+    return router;
+} 
