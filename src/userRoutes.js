@@ -84,6 +84,75 @@ router.post('/login', (req, res) => {
     });
 });
 
+router.post('/checkUserFollowing',(req,res) => {
+    const follower_user = req.body.follower_user;
+    const followed_user = req.body.followed_user;
+
+    const query = "SELECT * FROM followers WHERE follower_user = ? AND followed_user = ?";
+    db.query(query, [follower_user,followed_user], (err,results) => {
+        if(err) {
+            console.error('Error fetching data: ' + err);
+        }
+        if (results.length > 0) {
+            // User found, authentication successful
+            res.status(200).json({ status:'success', message: 'Relationship Found',results:results });
+        } else {
+            // User not found or invalid credentials
+            res.status(200).json({ status:'success', message: 'No Relationship Found',results:results});
+        }  
+    });
+});
+
+router.post('/addFollowerRelation',(req,res) => {
+    const dataToInsert = req.body;
+    const query = "INSERT INTO followers SET ?";
+    db.query(query, dataToInsert, (err,results) => {
+        if (err) {
+            console.error('Error inserting data: ' + err);
+        } else {
+            res.status(200).send({
+                status: "success",
+                message : "Relation Created",
+            });
+        }
+    });
+});
+
+router.post('/deleteFollowing',(req,res) => {
+    const follower_user = req.body.follower_user;
+    const followed_user = req.body.followed_user;
+    const query = "DELETE FROM followers WHERE follower_user = ? AND followed_user = ?";
+    db.query(query,[follower_user,followed_user],(err,results) => {
+        if (err) {
+            console.error('Error deleting data: ' + err);
+        } else {
+            res.status(200).send({
+                status: "success",
+                message : "Relation Deleted",
+            });
+        }
+    });
+});
+router.post('/searchAll',(req,res) => {
+    const searchValue = req.body.searchValue;
+    const loginUser = req.body.loginUserID;
+    if(searchValue){
+        const selectQuery = "SELECT * FROM users WHERE (username LIKE ? OR email LIKE ? OR interests LIKE ?) AND user_id != ?";
+        db.query(selectQuery, [`%${searchValue}%`,`%${searchValue}%`,`%${searchValue}%`, loginUser], (err, results) => {
+            if (err) {
+                console.error('Error fetching data: ' + err);
+            }
+            if (results.length > 0) {
+                // User found, authentication successful
+                res.status(200).json({ status:'success', message: 'Users found successful',results:results});
+            } else {
+                // User not found or invalid credentials
+                res.status(200).json({ status:'success', message: 'No users found',results:results });
+            }   
+        });
+    }
+});
+
 router.get('/:id',async(req,res) => {
     const user = req.params.id;
     // get User Details

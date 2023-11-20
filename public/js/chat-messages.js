@@ -1,6 +1,8 @@
 $(document).ready(function(){
     checkLocalStorage();
-    makeChatFromUrl();
+    if(getUserFromUrl()){
+        makeChatFromUrl();
+    }
     getSocketMessages();
     $('#sendMessageToUser').click(onSendingMessage);
 });

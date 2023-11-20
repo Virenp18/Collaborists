@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
     <%- include('../layout/head'); %>
+    <style>
+        .chatAvatar{
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
     <!-- Main Div starts -->
@@ -19,35 +26,38 @@
                     <!-- @enderror -->           
                     <!-- @if(isset($user)) -->
                         <p class="lead">
-                            Results on: Users (Search String)
+                            Results on: Users
                         </p>
-                        <ul class="list-group">
+                        <ul class="list-group" id="user_listing">
                         <!-- @foreach($user as $u) -->
                         
-                        <a href="./profile.html" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                            Viren Pratap
+                        <!-- <a href="./profile.html" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                            <div>
+                                <img class="img-fluid chatAvatar"
+                                src=""
+                                alt="user img"> Viren Pratap
+                            </div>
                             <span class="badge badge-danger badge-pill"><i class="fas fa-plus"></i> Follow</span>
-                        </a>
-                        <a href="./profile.html" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                        </a> -->
+                        <!-- <a href="./profile.html" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
                             Viren Sharma
                             <span class="badge badge-danger badge-pill"><i class="fas fa-plus"></i> Follow</span>
-                        </a>
+                        </a> -->
                         <!-- @endforeach -->
                         </ul>
                     <!-- @endif   -->
                 
                     <!-- @if(isset($post)) -->
-                        <p class="lead mt-2">
+                        <!-- <p class="lead mt-2">
                             Results on: Image (Viren)
                         </p>
-                        <div class="card-columns">
+                        <div class="card-columns"> -->
                             <!-- @foreach ($post as $p) -->
-                                <div class="card  border-white">
+                                <!-- <div class="card  border-white">
                                     <a href="./singlePost" >
                                         <img class="card-img-top rounded-conrners preview"  src="/img/pexels-photo-674010.jpeg" alt="Searched Image">
                                     </a>
                                     <div class="card-footer d-flex justify-content-between" style="background-color: transparent; border-top : none;">
-                                        <!-- <a href="./singlePost.html{{ $p->id }}" >{{ $p->title }}</a> -->
                                         <p class="h4 text-secondary">Title</p>
                                         <button type="button" data-toggle="tooltip" data-placement="top" title="tooltip" data-html="true" class="btn btn-link">
                                             <i class="fa fa-ellipsis-h"></i>
@@ -59,7 +69,6 @@
                                         <img class="card-img-top rounded-conrners preview"  src="/img/pexels-photo-674010.jpeg" alt="Searched Image">
                                     </a>
                                     <div class="card-footer d-flex justify-content-between" style="background-color: transparent; border-top : none;">
-                                        <!-- <a href="./singlePost.html{{ $p->id }}" >{{ $p->title }}</a> -->
                                         <p class="h4 text-secondary">Title</p>
                                         <button type="button" data-toggle="tooltip" data-placement="top" title="tooltip" data-html="true" class="btn btn-link">
                                             <i class="fa fa-ellipsis-h"></i>
@@ -71,16 +80,16 @@
                                         <img class="card-img-top rounded-conrners preview"  src="/img/pexels-photo-674010.jpeg" alt="alt">
                                     </a>
                                     <div class="card-footer d-flex justify-content-between" style="background-color: transparent; border-top : none;">
-                                        <!-- <a href="./singlePost.html{{ $p->id }}" >{{ $p->title }}</a> -->
+                                      
                                         <p class="h4 text-secondary">Title</p>
                                         <button type="button" data-toggle="tooltip" data-placement="top" title="tooltip" data-html="true" class="btn btn-link">
                                             <i class="fa fa-ellipsis-h"></i>
                                         </button>
                                     </div>
-                                </div>
+                                </div> -->
                                 
                             <!-- @endforeach   -->
-                        </div> 
+                        <!-- </div>  -->
                         
                     <!-- @endif   -->
                 
@@ -97,11 +106,6 @@
     </div>
     <!-- Main Div ends -->
     <%- include('../layout/scripts'); %>
-    <script src="/js/drag.js"></script>
-    <script src="/js/add-post.js"></script>
-    <script src="/js/boards.js"></script>
-
-
-
+    <script src="/js/search.js"></script>
 </body>
 </html>

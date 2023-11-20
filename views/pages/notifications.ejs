@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../layout/head'); %>
+    <link href="/css/notifications.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Main Div starts -->
+    <div id="app">
+        <!-- Navigation starts -->
+        <%- include('../layout/header'); %>
+            <!-- Navigation ends -->
+
+            <!-- Main Div starts -->
+            <main class="py-2">
+                <div class="row notification-container">
+                    <h2 class="text-center">My Notifications</h2>
+                    <p class="dismiss text-right"><a id="dismiss-all" href="">Read All</a></p>
+                    <div id="notification_listing">
+                        <!-- <div class="card notification-card notification-invitation">
+                            <div class="card-body">
+                                <table>
+                                <tr>
+                                    <td style="width:70%"><div class="card-title">Jane invited you to join '<b>Familia</b>' group</div></td>
+                                    <td style="width:30%">
+                                        <a style="color: #fff;text-decoration: none;" class="btn btn-danger"><i class="fa-regular fa-eye"></i> Read</a>
+                                        <a href="#" class="btn btn-danger"><i class="fa-regular fa-eye"></i> Read</a>                                        
+                                    </td>
+                                </tr>
+                                </table>
+                            </div>
+                        </div>    -->
+                  </div>
+            </main>
+    </div>
+    <%- include('../layout/scripts'); %>
+    <script src="/js/notifications.js"></script>
+</body>
+</html>
