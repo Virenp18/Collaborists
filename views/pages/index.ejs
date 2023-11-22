@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include('../layout/head'); %>
 </head>
+
 <body>
     <!-- Main Div starts -->
     <div id="app">
         <!-- Navigation starts -->
         <%- include('../layout/header'); %>
-        <!-- Navigation ends -->
+            <!-- Navigation ends -->
 
-        <!-- Main Div starts -->
-        <main class="py-4">
-            <div class="container">
-                <div class="card-columns">
-                    <!-- @foreach ($posts as $p) -->
-                    <div class="card border-white">
+            <!-- Main Div starts -->
+            <main class="py-4">
+                 <div class="container" >
+
+                <div class="card-columns" id="projectList">
+                    
+                    <!-- <div class="card border-white">
                         <a href="pages/singlePost" >
                             <img class="card-img-top rounded-conrners preview"  src="/img/pexels-photo-674010.jpeg" alt="alt">
                         </a>
@@ -26,35 +29,16 @@
                             </button>
                         </div>
                     </div>
-                    <div class="card border-white">
-                        <a href="pages/singlePost" >
-                            <img class="card-img-top rounded-conrners preview"  src="/img/pexels-photo-674010.jpeg" alt="alt">
-                        </a>
-                        <div class="card-footer d-flex justify-content-between mb-0" style="background-color: transparent; border-top : none;">
-                            <p class="text-secondary">Title</p>
-                            <button type="button" data-toggle="tooltip" data-placement="top" title="tooltip" data-html="true" class="btn btn-link">
-                                <i class="fa fa-ellipsis-h" ></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card border-white">
-                        <a href="pages/singlePost" >
-                            <img class="card-img-top rounded-conrners preview"  src="/img/pexels-photo-674010.jpeg" alt="alt">
-                        </a>
-                        <div class="card-footer d-flex justify-content-between mb-0" style="background-color: transparent; border-top : none;">
-                            <p class="text-secondary">Title</p>
-                            <button type="button" data-toggle="tooltip" data-placement="top" title="tooltip" data-html="true" class="btn btn-link">
-                                <i class="fa fa-ellipsis-h" ></i>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- @endforeach   -->
-                </div> 
+                    
+    </div> 
+            </div> -->
             </div>
-        </main>
-        <!-- Main Div ends -->
+            </main>
+            <!-- Main Div ends -->
     </div>
     <!-- Main Div ends -->
     <%- include('../layout/scripts'); %>
+    <script src="/js/allPosts.js"></script>
 </body>
+
 </html>

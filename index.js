@@ -45,10 +45,12 @@ app.use('/api/users', userRoutes);
 app.use('/api/chats', chatRoutes);
 app.use('/api/notifications', notificationRotes);
 
+
 const keys = { APPSETTING_BACK_END_URL: process.env.APPSETTING_BACK_END_URL} ;
 
 app.get('/', function(req, res) {
     res.render('pages/index', keys);
+
 });
 
 const pages = ['create','profile','boards','singlePost','login','edit','register','search','setPassword','resetPassword','verify','messages','notifications'];
